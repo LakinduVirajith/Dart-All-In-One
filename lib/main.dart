@@ -158,6 +158,14 @@ void customOperatorsExample() {
   print(person1 == person3); // Output: false
 }
 
+/* ---- Variable and Constant Declarations  ---- */
+// 1. const: Used to declare a constant value that is determined at compile time.
+const age = 27;
+const twiceAge = age * 2;
+
+// 2. var: Used to declare a variable when you don't want to specify the type. The type is inferred from the value assigned to it.
+var name = 'Alice';
+
 void main() {
   runApp(const MyApp());
 }
