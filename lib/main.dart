@@ -174,6 +174,13 @@ String finalExample() {
   return nickname;
 }
 
+/* ---- Late Variable Initialization ---- */
+// 1. late: Used to indicate that a variable will be initialized at a later point before it's accessed.
+late int value;
+void initValue() {
+  value = 10;
+}
+
 void main() {
   runApp(const MyApp());
 }
