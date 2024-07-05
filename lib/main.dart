@@ -203,6 +203,17 @@ void dynamicExample() {
   valueDy = 10;
 }
 
+/* ---- Boolean Literals ---- */
+// 1. true: Boolean literal representing the true value.
+void trueExample() {
+  bool isActive = true;
+}
+
+// 2. false: Boolean literal representing the false value.
+void falseExample() {
+  bool isActive = false;
+}
+
 void main() {
   runApp(const MyApp());
 }
