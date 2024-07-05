@@ -292,6 +292,75 @@ void mapsExample() {
   ages.clear();
 }
 
+/* ---- Functions and Methods ---- */
+// 1. Function with return type: Used when you need to perform some computation and return a result.
+String getFullName(String firstName, String lastName) {
+  return '$firstName $lastName';
+}
+
+// 2. Arrow function: Convenient for short and concise operations where the computation and return can be expressed in a single line.
+void getTwiceAge(int age) => age * 2;
+
+// 3. Void: Indicates that a function does not return a value.
+void greet() {
+  print('Hello');
+}
+
+// 4. Return: Exits a function and optionally returns a value.
+int add(int a, int b) {
+  return a + b;
+}
+
+// 5. Function with optional parameters: Allows parameters to be optional with default values.
+void sayMessage(String message, [String? name]) {
+  if (name != null) {
+    print('$message, $name!');
+  } else {
+    print(message);
+  }
+}
+
+// 6. Named parameters: Allows parameters to be passed by name, improving readability and flexibility.
+void greetUser({required String name, int age = 30}) {
+  print('Hello, $name! You are $age years old.');
+}
+
+// 7. Recursive function: A function that calls itself to solve problems in which the solution depends on solutions to smaller instances of the same problem.
+int factorial(int n) {
+  if (n == 0 || n == 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+// 8. Function as a parameter: Passes a function as an argument to another function for flexibility and reusability.
+void processOperation(int a, int b, int Function(int, int) operation) {
+  print('Result of operation: ${operation(a, b)}');
+}
+
+void functionExample() {
+  // Example usage of functions
+  String fullName = getFullName('John', 'Doe');
+  print('Full Name: $fullName');
+
+  int sum = add(3, 5);
+  print('Sum: $sum');
+
+  greet();
+
+  sayMessage('Welcome');
+  sayMessage('Hello', 'Alice');
+
+  greetUser(name: 'Bob');
+  greetUser(name: 'Carol', age: 25);
+
+  int fact = factorial(5);
+  print('Factorial of 5: $fact');
+
+  processOperation(10, 5, (a, b) => a - b);
+}
+
 void main() {
   runApp(const MyApp());
 }
