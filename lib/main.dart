@@ -361,6 +361,99 @@ void functionExample() {
   processOperation(10, 5, (a, b) => a - b);
 }
 
+/* ---- Control Flow Statements  ---- */
+// 1. if / else: Used for executing code conditionally based on whether a condition is true or false.
+void checkAge(int age) {
+  // Check if age is greater than 18
+  if (age > 18) {
+    print('Adult'); // Executes if age is greater than 18
+  }
+  // Check if age is greater than 12 but less than or equal to 18
+  else if (age > 12) {
+    print(
+        'Teenager'); // Executes if age is greater than 12 but less than or equal to 18
+  }
+  // Executes if none of the above conditions are true (age is 12 or less)
+  else {
+    print('Child');
+  }
+}
+
+// 2. for: Used to create a for loop that iterates over a range of values.
+void forLoopExample() {
+  // for loop that starts with i = 0 and runs while i < 5, incrementing i by 1 each iteration
+  for (var i = 0; i < 5; i++) {
+    print(i); // Prints the current value of i in each iteration
+  }
+
+  // The in keyword is used in for loops to iterate over collections.
+  var numbers = [1, 2, 3, 4, 5];
+  for (var number in numbers) {
+    print(number); // Output: [1, 2, 3, 4, 5]
+  }
+}
+
+// 3. while: Used to create a while loop that runs as long as a condition is true.
+void whileLoopExample() {
+  var count = 0;
+  while (count < 5) {
+    print('Running $count'); // Prints the current count
+    count++; // Increments count by 1
+  }
+}
+
+// 4. do / while: Used to create a do-while loop that runs at least once and then continues as long as a condition is true.
+void doWhileLoopExample() {
+  var count = 0;
+  do {
+    print('Running $count'); // Prints the current count
+    count++; // Increments count by 1
+  } while (count < 5);
+}
+
+// 5. switch / case: Used for multiple conditional branches.
+void switchExample() {
+  const color = 'green';
+  const execute = true;
+
+  // when: To set an optional guard clause after a case clause, use the keyword when. A guard clause can follow if case, and both switch statements and expressions.
+  switch (color) {
+    case 'red' when execute:
+      print('Red'); // Executes if color is 'red'
+      break;
+    case 'green':
+      print('Green'); // Executes if color is 'green'
+      break;
+    case 'blue':
+      print('Blue'); // Executes if color is 'blue'
+      break;
+    default:
+      print('Unknown color'); // Executes if none of the above cases match
+  }
+}
+
+// 6. break: Exits a loop or a switch statement.
+void breakExample() {
+  for (var i = 0; i < 10; i++) {
+    if (i == 5) {
+      break; // Exits the loop when i is 5
+    }
+    print(i); // Prints the current value of i
+  }
+  // Output: 0 1 2 3 4
+}
+
+// 7. continue: Skips the current iteration of a loop and continues with the next iteration.
+void continueExample() {
+  for (var i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+      continue; // Skips the current iteration if i is even
+    }
+    print(i); // Prints the current value of i
+  }
+  // Output: 1 3 5 7 9
+}
+
 void main() {
   runApp(const MyApp());
 }
