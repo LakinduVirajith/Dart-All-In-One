@@ -816,6 +816,12 @@ void hideExample() {
   // import 'dart:math' hide pi;
 }
 
+/* ---- Dart Miscellaneous Keywords ---- */
+// 1. assert: Checks a condition and throws an error if the condition is false.
+void assertExample() {
+  // assert(age > 0);
+}
+
 void main() {
   runApp(const MyApp());
 }
