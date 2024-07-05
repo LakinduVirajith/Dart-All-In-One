@@ -1,4 +1,162 @@
+// ignore_for_file: avoid_print, unused_local_variable, unused_field
 import 'package:flutter/material.dart';
+
+/* ---- Operators in Dart ---- */
+// 1. Arithmetic Operators: These operators are used to perform basic arithmetic operations.
+void arithmeticOperatorsExample() {
+  int a = 10;
+  int b = 5;
+
+  print('Addition: ${a + b}'); // Output: 15
+  print('Subtraction: ${a - b}'); // Output: 5
+  print('Multiplication: ${a * b}'); // Output: 50
+  print('Division: ${a / b}'); // Output: 2.0
+  print('Integer Division: ${a ~/ b}'); // Output: 2
+  print('Modulus: ${a % b}'); // Output: 0
+}
+
+// 2. Relational Operators: These operators are used to compare two values.
+void relationalOperatorsExample() {
+  int a = 10;
+  int b = 5;
+
+  print('Equal: ${a == b}'); // Output: false
+  print('Not equal: ${a != b}'); // Output: true
+  print('Greater than: ${a > b}'); // Output: true
+  print('Less than: ${a < b}'); // Output: false
+  print('Greater than or equal to: ${a >= b}'); // Output: true
+  print('Less than or equal to: ${a <= b}'); // Output: false
+}
+
+// 3. Logical Operators: These operators are used to combine multiple boolean expressions.
+void logicalOperatorsExample() {
+  bool x = true;
+  bool y = false;
+
+  print('AND: ${x && y}'); // Output: false
+  print('OR: ${x || y}'); // Output: true
+  print('NOT: ${!x}'); // Output: false
+}
+
+// 4. Bitwise Operators: These operators are used to perform bit-level operations.
+void bitwiseOperatorsExample() {
+  int a = 5; // 0101 in binary
+  int b = 3; // 0011 in binary
+
+  print('Bitwise AND: ${a & b}'); // Output: 1 (0001 in binary)
+  print('Bitwise OR: ${a | b}'); // Output: 7 (0111 in binary)
+  print('Bitwise XOR: ${a ^ b}'); // Output: 6 (0110 in binary)
+  print('Bitwise NOT: ${~a}'); // Output: -6 (invert all bits)
+  print('Left shift: ${a << 1}'); // Output: 10 (1010 in binary)
+  print('Right shift: ${a >> 1}'); // Output: 2 (0010 in binary)
+}
+
+// 5. Assignment Operators: These operators are used to assign values to variables.
+void assignmentOperatorsExample() {
+  int a = 10;
+  int b = 5;
+
+  a += b; // a = a + b
+  print('Addition assignment: $a'); // Output: 15
+
+  a -= b; // a = a - b
+  print('Subtraction assignment: $a'); // Output: 10
+
+  a *= b; // a = a * b
+  print('Multiplication assignment: $a'); // Output: 50
+
+  a ~/= b; // a = a ~/ b
+  print('Integer division assignment: $a'); // Output: 10
+
+  a %= b; // a = a % b
+  print('Modulus assignment: $a'); // Output: 0
+}
+
+// 6. Conditional Operator: This operator is used to evaluate boolean expressions and return one of two values. also call as (Ternary Operator)
+void conditionalOperatorExample() {
+  int a = 10;
+  int b = 5;
+
+  String result = (a > b) ? 'a is greater' : 'b is greater';
+  print(result); // Output: a is greater
+}
+
+// 7. Null-Aware Operators: These operators are used to work with nullable values.
+void nullAwareOperatorsExample() {
+  int? a; // Nullable integer
+  int b = 5; // Non-nullable integer
+
+  // Null-coalescing operator (??): Returns the value on the left if it's not null; otherwise, returns the value on the right.
+  int result = a ?? b;
+  print(result); // Output: 5
+
+  // Null-coalescing assignment operator (??=): Assigns a value to a variable only if that variable is null.
+  a ??= b;
+  print(a); // Output: 5
+
+  // Null-aware access operator (?.): Allows you to call methods or access properties on an object only if that object is not null.
+  List<int>? numbers; // Nullable list of integers
+  print(numbers?.length); // Output: null (because numbers is null)
+  numbers = [1, 2, 3]; // Assigning a non-null value to numbers
+  print(numbers?.length); // Output: 3
+
+  // Null-aware cascade operator (..): Allows you to perform a series of operations on an object only if that object is not null.
+  List<int>? numbersList; // Nullable list of integers
+  // Add elements to the list only if it is not null
+  numbersList
+    ?..add(1)
+    ..add(2); // No effect because numbersList is null
+
+  print(numbersList); // Output: null
+
+  numbersList = []; // Assigning a non-null value to numbersList
+  numbersList
+    ?..add(1)
+    ..add(2);
+
+  print(numbersList); // Output: [1, 2]
+}
+
+// 8. Type Test Operators: These operators are used to check the type of an object at runtime.
+void typeTestOperatorsExample() {
+  var a = 10;
+  var b = 'Hello';
+
+  print(a is int); // Output: true
+  print(b is! int); // Output: true
+}
+
+// 9. Custom Operators: Custom operators in Dart allow you to define how an operator (such as +, -, *, /) behaves when used with instances of your class.
+class Person {
+  final String name;
+  final int age;
+
+  Person(this.name, this.age);
+
+  // Custom '==' operator to compare two Person instances
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! Person) return false;
+    return name == other.name && age == other.age;
+  }
+
+  // Overriding hashCode is necessary when overriding '=='
+  @override
+  int get hashCode => name.hashCode ^ age.hashCode;
+
+  @override
+  String toString() => 'Person(name: $name, age: $age)';
+}
+
+void customOperatorsExample() {
+  var person1 = Person('Alice', 30);
+  var person2 = Person('Alice', 30);
+  var person3 = Person('Bob', 25);
+
+  print(person1 == person2); // Output: true
+  print(person1 == person3); // Output: false
+}
 
 void main() {
   runApp(const MyApp());
