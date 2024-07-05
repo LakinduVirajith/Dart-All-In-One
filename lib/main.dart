@@ -166,6 +166,14 @@ const twiceAge = age * 2;
 // 2. var: Used to declare a variable when you don't want to specify the type. The type is inferred from the value assigned to it.
 var name = 'Alice';
 
+/* ---- Final Variable Declaration ---- */
+// 1. final: Used to declare a variable that can only be set once. The value is determined at runtime.
+String finalExample() {
+  final String nickname;
+  nickname = 'Bobby'; // Once assigned, 'nickname' cannot be changed.
+  return nickname;
+}
+
 void main() {
   runApp(const MyApp());
 }
