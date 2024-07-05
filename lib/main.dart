@@ -221,6 +221,77 @@ void nullExample() {
   names = null;
 }
 
+/* ---- Dart Collections  ---- */
+// 1. lists: A list in Dart is an ordered collection of items. Lists are similar to arrays in other programming languages.
+void listExample() {
+  // Creating a list of integers
+  List<String> fruits = ['apple', 'banana'];
+
+  // Adding a single item
+  fruits.add('orange');
+
+  // Adding multiple items
+  fruits.addAll(['grape', 'pineapple']);
+
+  // Accessing items
+  print(fruits[0]); // Output: apple
+
+  // Modifying items
+  fruits[1] = 'blueberry';
+
+  // Removing a single item by value
+  fruits.remove('banana');
+
+  // Removing a single item by index
+  fruits.removeAt(0);
+
+  // Removing all items
+  fruits.clear();
+}
+
+// 2. sets: A set in Dart is an unordered collection of unique items. Sets are useful when you want to store unique values and don't care about the order.
+void setsExample() {
+  Set<String> fruits = {'apple', 'banana'};
+
+  // Adding a single item
+  fruits.add('orange');
+
+  // Adding multiple items
+  fruits.addAll({'grape', 'pineapple'});
+
+  // Trying to add a duplicate item (it will be ignored)
+  fruits.add('apple');
+
+  // Removing a single item
+  fruits.remove('banana');
+
+  // Clearing all items
+  fruits.clear();
+}
+
+// 3. maps: A map in Dart is an unordered collection of key-value pairs, where each key is unique. Maps are useful when you need to associate values with keys, such as storing user information where keys can be user IDs and values can be user details.
+void mapsExample() {
+  Map<String, int> ages = {'Alice': 25, 'Bob': 30};
+
+  // Adding a new entry
+  ages['Charlie'] = 35;
+
+  // Modifying an existing entry
+  ages['Alice'] = 26;
+
+  // Accessing values using keys
+  print(ages['Alice']); // Output: 25
+
+  // Trying to access a non-existing key returns null
+  print(ages['David']); // Output: null
+
+  // Removing an entry using a key
+  ages.remove('Bob');
+
+  // Clearing all entries
+  ages.clear();
+}
+
 void main() {
   runApp(const MyApp());
 }
