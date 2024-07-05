@@ -774,6 +774,37 @@ class Employee {
   late String _name; // private member
 }
 
+/* ---- Dart Library Directives ---- */
+// 1. import: Includes external libraries.
+void importExample() {
+  // import 'package:flutter/material.dart';
+}
+
+// 2. export: Exports libraries so they can be used by other libraries.
+void exportExample() {
+  // export 'src/my_library.dart';
+}
+
+// 3. library: Specifies the name of a library.
+void libraryExample() {
+  // library my_library;
+}
+
+// 4. part: Includes part files in a library.
+void partExample() {
+  // part 'my_library_part.dart';
+}
+
+// 5. part of: Declares a part file in a library.
+void partOfExample() {
+  // part of my_library;
+}
+
+// 6. deferred: The deferred keyword is used for lazy loading of libraries.
+void deferredExample() {
+  // import 'lib.dart' deferred as lib;
+}
+
 void main() {
   runApp(const MyApp());
 }
