@@ -214,6 +214,13 @@ void falseExample() {
   bool isActive = false;
 }
 
+/* ---- Null Safety ---- */
+// 1. null: Null safety is a feature in Dart that helps us distinguish between nullable variables and non-nullable variables.
+void nullExample() {
+  List<String?>? names = ['Foo', 'Bar', null];
+  names = null;
+}
+
 void main() {
   runApp(const MyApp());
 }
