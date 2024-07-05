@@ -845,3 +845,167 @@ class MyHomePage extends StatelessWidget {
     return const Scaffold();
   }
 }
+
+/* ---- Advance Dart ---- */
+// 1. covariant: used to relax type constraints in method parameters, allowing for more flexible typing. It indicates that a parameter can accept subtypes of the declared type. This is particularly useful in situations where you want to override a method in a subclass and change the type of one of its parameters to a more specific type.
+class LivingThings {
+  void makeSound(covariant LivingThings animal) {
+    print('Living things makes a sound.');
+  }
+}
+
+class Tiger extends LivingThings {
+  @override
+  void makeSound(Tiger animal) {
+    print('Tiger roaring.');
+  }
+}
+
+class Cat extends LivingThings {
+  @override
+  void makeSound(Cat animal) {
+    print('Cat meows.');
+  }
+}
+
+void covariantExample() {
+  LivingThings genericAnimal = LivingThings();
+  Tiger tiger = Tiger();
+  Cat cat = Cat();
+
+  genericAnimal
+      .makeSound(genericAnimal); // Output: Living things makes a sound.
+  tiger.makeSound(tiger); // Output: Tiger roaring.
+  cat.makeSound(cat); // Output: Cat meows.
+}
+
+// 2. external: used to indicate that a method, getter, or setter is implemented outside of Dart. This is often used when interfacing with native code.
+class ExternalExample {
+  external void externalMethod();
+
+  void normalMethod() {
+    print("This is a normal method.");
+  }
+}
+
+void externalExample() {
+  var example = ExternalExample();
+
+  example.normalMethod();
+  // example.externalMethod(); // This will throw an error if called without actual implementation.
+}
+
+// 3. future: value that will be available at some point in the future. This is particularly useful for operations that take time to complete, such as network requests, file I/O, or any asynchronous computation.
+Future<int> fetchUserData() {
+  return Future.delayed(const Duration(seconds: 2), () {
+    // Simulate fetching data asynchronously
+    return 42; // Return some data after 2 seconds
+  });
+}
+
+void futureExample() async {
+  final result = await fetchUserData();
+  print(result);
+}
+
+// 4. stream: used to handle a sequence of asynchronous events. While Future represents a single value or error that will be available at some point in the future, Stream represents a sequence of values or errors that are delivered asynchronously over time.
+Stream<int> getValue() {
+  return Stream.fromIterable([1, 2, 3, 4, 5])
+      .where((value) => value % 2 == 0) // Filter even numbers
+      .map((value) => value * 2) // Double the values
+      .distinct(); // Remove consecutive duplicates
+}
+
+Stream<String> getName() {
+  return Stream.periodic(const Duration(seconds: 1), (value) {
+    return 'Foo';
+  });
+}
+
+void streamExample() async {
+  await for (final value in getValue()) {
+    print('Processed value: $value');
+  }
+
+  await for (final value in getName()) {
+    print('Name is: $value');
+  }
+}
+
+// 5. generator: special functions that allow you to produce a sequence of values lazily, meaning they generate values on-demand. There are two types of generators: synchronous generators and asynchronous generators.
+Iterable<int> syncGenerator(int n) sync* {
+  for (int i = 0; i < n; i++) {
+    yield i;
+  }
+}
+
+void syncGeneratorExample() {
+  // Using the synchronous generator
+  var numbers = syncGenerator(5);
+  for (var number in numbers) {
+    print(number); // Output: 0, 1, 2, 3, 4
+  }
+}
+
+Stream<int> asyncGenerator(int n) async* {
+  for (int i = 0; i < n; i++) {
+    await Future.delayed(const Duration(seconds: 1)); // Simulate async work
+    yield i;
+  }
+}
+
+void asyncGeneratorExample() async {
+  // Using the asynchronous generator
+  await for (var number in asyncGenerator(5)) {
+    print(number); // Output: 0, 1, 2, 3, 4 (with 1-second intervals)
+    if (value == 2) {
+      print("Reached value 2, stopping the stream.");
+      break;
+    }
+  }
+}
+
+// 6. generics: used to create classes, methods, and collections that operate on a specified type or a set of types. Generics help in writing reusable and type-safe code. They enable you to define a component that can work with different data types while ensuring type safety.
+class Storage<T> {
+  // Generic collection: List to store items
+  List<T> items = [];
+
+  // Method to add an item to the storage
+  void addItem(T item) {
+    items.add(item);
+  }
+
+  // Generic method to find an item in the storage
+  bool findItem(T item) {
+    return items.contains(item);
+  }
+}
+
+void genericsExample() {
+  // Creating a storage for integers
+  Storage<int> intStorage = Storage<int>();
+  intStorage.addItem(10);
+  intStorage.addItem(20);
+  intStorage.addItem(30);
+
+  print('Integer Storage: ${intStorage.items}');
+  print('Finding 20 in Integer Storage: ${intStorage.findItem(20)}');
+  print('Finding 40 in Integer Storage: ${intStorage.findItem(40)}');
+
+  // Creating a storage for strings
+  Storage<String> stringStorage = Storage<String>();
+  stringStorage.addItem('Dart');
+  stringStorage.addItem('Flutter');
+  stringStorage.addItem('Programming');
+
+  print('String Storage: ${stringStorage.items}');
+  print(
+      'Finding "Flutter" in String Storage: ${stringStorage.findItem('Flutter')}');
+  print('Finding "Java" in String Storage: ${stringStorage.findItem('Java')}');
+}
+
+// 7. of: ommonly used naming convention in methods, especially within the Flutter framework. These methods typically serve as static or factory methods to construct instances or provide access to instances of a particular class, often used to fetch a specific instance from a context or to create new instances.
+void ofExample() {
+  // ThemeData theme = Theme.of(context); // Retrieves the ThemeData from the context
+  // var mediaQueryData = MediaQuery.of(context); // Retrieves the MediaQueryData from the context
+}
