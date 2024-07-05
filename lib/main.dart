@@ -726,6 +726,33 @@ void syncExample() {
   }
 }
 
+/* ---- Type and Generics  ---- */
+// 1. type: The type keyword is used to refer to a type in Dart's generic programming.
+void printType<T>() {
+  print(T);
+}
+
+void typeExample() {
+  printType<int>(); // Output: int
+  printType<String>(); // Output: String
+}
+
+// 2. typedef: The typedef keyword is used to define a function type alias.
+typedef IntOperation = int Function(int a, int b);
+
+int addition(int a, int b) => a + b;
+int subtraction(int a, int b) => a - b;
+
+void typedefExample() {
+  IntOperation operation;
+
+  operation = addition;
+  print(operation(2, 3)); // Output: 5
+
+  operation = subtraction;
+  print(operation(5, 3)); // Output: 2
+}
+
 void main() {
   runApp(const MyApp());
 }
