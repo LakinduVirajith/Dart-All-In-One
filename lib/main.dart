@@ -181,6 +181,21 @@ void initValue() {
   value = 10;
 }
 
+/* ---- Static Variables and Methods ---- */
+// 1. static: Used to declare class-level variables and methods that can be accessed without creating an instance of the class.
+class Circle {
+  static const double pi = 3.14;
+
+  static double calculateArea(double radius) {
+    return pi * radius * radius;
+  }
+}
+
+void staticExample() {
+  Circle.pi == 16.0;
+  Circle.calculateArea(16.0);
+}
+
 void main() {
   runApp(const MyApp());
 }
