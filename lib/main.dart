@@ -688,6 +688,44 @@ void throwExample() {
       'Something went wrong'); // Throws an exception with a specific error message
 }
 
+/* ---- Asynchronous and Synchronous Programming  ---- */
+// 1. async: Marks a function as asynchronous.
+Future<void> fetchData() async {
+  // Fetch data asynchronously
+}
+
+// 2. await: Pauses the execution of an async function until a Future completes.
+void fetchDataAndProcess() async {
+  var data = await fetchData(); // Pauses here until fetchData() completes
+  // Process the fetched data
+}
+
+// 3. yield: The yield keyword is used in generator functions to produce a value.
+Stream<int> numbersAsync() async* {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+void yieldExample() async {
+  await for (var number in numbersAsync()) {
+    print(number); // Output: 1, 2, 3
+  }
+}
+
+// 4. sync: The sync keyword is used with generator functions that return an iterable.
+Iterable<int> numbersSync() sync* {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+void syncExample() {
+  for (var number in numbersSync()) {
+    print(number); // Output: 1, 2, 3
+  }
+}
+
 void main() {
   runApp(const MyApp());
 }
