@@ -753,6 +753,20 @@ void typedefExample() {
   print(operation(5, 3)); // Output: 2
 }
 
+/* ---- Type Checking and Casting ---- */
+// 1. is: Checks if an object is of a specific type.
+void isExample(Object name) {
+  if (name is String) {
+    print('Name is a string'); // Checks if 'name' variable is of type String
+  }
+}
+
+// 2. as: Performs a typecast.
+void asExample(Object person) {
+  var employee = person
+      as Employee; // Casts 'person' to type Employee and assigns it to 'employee'
+}
+
 void main() {
   runApp(const MyApp());
 }
