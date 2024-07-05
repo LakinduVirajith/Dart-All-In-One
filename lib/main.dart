@@ -454,6 +454,216 @@ void continueExample() {
   // Output: 1 3 5 7 9
 }
 
+/* ---- Object-Oriented Programming ---- */
+// 1. class: Defines a blueprint for creating objects.
+class Student {
+  String name;
+  int age;
+
+  Student(
+      this.name, this.age); // Constructor for initializing 'name' and 'age'.
+}
+
+// 2. abstract: Used to declare abstract classes, which cannot be instantiated directly but can have abstract methods that subclasses must implement.
+abstract class Animal {
+  void makeSound(); // Abstract method
+}
+
+// 3. interface: the 'blueprint' for a class, outlining the methods and properties that a class should have.
+interface class Shape {
+  void draw() {
+    // ...
+  }
+}
+
+// 4. mixin: The mixin keyword is used to create a mixin class that can be reused in multiple classes.
+class Animals {
+  void breathe() {
+    print('Breathing');
+  }
+}
+
+// The on keyword in the mixin specifies that CanFly can only be used with classes that extend Animal.
+mixin CanFly on Animals {
+  void fly() {
+    print('Flying');
+  }
+}
+
+// The with keyword is used to include the capabilities of a mixin in a class.
+class Bird extends Animals with CanFly {}
+
+void mixinExample() {
+  var bird = Bird();
+  bird.breathe(); // Output: Breathing
+  bird.fly(); // Output: Flying
+}
+
+// 5. extends: Used to create a subclass that inherits properties and methods from another class (superclass).
+class Dog extends Animal {
+  void makeSound() {
+    print('Woof!');
+  }
+}
+
+// 6. implements: used to declare that a class implements a specified interface, meaning it must provide implementations for all methods of that interface.
+class Rectangle implements Shape {
+  @override
+  void draw() {
+    // Draw rectangle implementation
+  }
+}
+
+// 7. enum: Used to declare a group of named constants.
+enum Color {
+  red,
+  green,
+  blue,
+}
+
+var selectedColor = Color.red;
+
+// 8. factory: factory constructor is a way to create an instance of a class. Unlike regular constructors, factory constructors can return instances of a subclass or an existing instance of the class.
+class Car {
+  final String model;
+
+  // Private constructor
+  Car._(this.model);
+
+  // Factory constructor
+  factory Car(String type) {
+    if (type == 'sedan') {
+      return Car._('Sedan');
+    } else if (type == 'suv') {
+      return Car._('SUV');
+    } else {
+      return Car._('Unknown Car');
+    }
+  }
+
+  @override
+  String toString() => 'Car model: $model';
+}
+
+void factoryExample() {
+  var sedan = Car('sedan');
+  var suv = Car('suv');
+  var truck = Car('truck');
+
+  print(sedan); // Output: Car model: Sedan
+  print(suv); // Output: Car model: SUV
+  print(truck); // Output: Car model: Unknown Car
+}
+
+// 9. extension: allow you to add new functionality to existing libraries, types, or classes without modifying them. This allows you to add methods, getters, or setters to a class without modifying the original class.
+class Rabbit {
+  final String name;
+  Rabbit(this.name);
+}
+
+extension Run on Rabbit {
+  void run() {
+    print('Rabbot $name is running');
+  }
+}
+
+void extensionExample() {
+  final rabbit = Rabbit('rabbit');
+  rabbit.run();
+}
+
+// 10. set: The set keyword is used to define a setter method.
+class SetExample {
+  double _width = 0;
+
+  double get width => _width;
+
+  set width(double value) {
+    if (value > 0) {
+      _width = value;
+    }
+  }
+}
+
+// 11. get: The get keyword is used to define a getter method.
+class GetExample {
+  final double radius;
+
+  GetExample(this.radius);
+
+  double get area => 3.14 * radius * radius;
+}
+
+// 12. required: The required keyword is used to indicate that a named parameter is mandatory.
+class RequiredExample {
+  final String name;
+  final int age;
+
+  RequiredExample({required this.name, required this.age});
+}
+
+// 13. new: Used to create a new instance of a class. In modern Dart, you can omit it.
+var person = Person('Alice', 30); // or new Person('Alice', 30);
+
+// 14. this: Refers to the current instance of a class.
+class NewPerson {
+  String name;
+
+  NewPerson(this.name);
+
+  void printName() {
+    print(this.name); // Outputs the current instance's 'name'.
+  }
+}
+
+// 15. super: The super keyword is used to refer to the superclass's members.
+class Parent {
+  void sayHello() {
+    print('Hello from parent');
+  }
+}
+
+class Child extends Parent {
+  @override
+  void sayHello() {
+    super.sayHello();
+    print('Hello from child');
+  }
+}
+
+void superExample() {
+  var child = Child();
+  child.sayHello();
+  // Output:
+  // Hello from parent
+  // Hello from child
+}
+
+// 16. sealed: The sealed keyword indicates that a class cannot be extended outside of its library.
+sealed class SealedClass {
+  void display() {
+    print('Sealed class method');
+  }
+}
+
+// 17. final (class): Declares a class that cannot be subclassed.
+final class Utility {
+  // Utility methods
+}
+
+// 18. base: The base keyword is used to indicate that a class can be extended but cannot be implemented by other classes.
+base class BaseClass {
+  void display() {
+    print('Base class method');
+  }
+}
+
+base class DerivedClass extends BaseClass {
+  void show() {
+    print('Derived class method');
+  }
+}
+
 void main() {
   runApp(const MyApp());
 }
