@@ -664,6 +664,30 @@ base class DerivedClass extends BaseClass {
   }
 }
 
+/* ---- Error Handling  ---- */
+// 1. try / catch / finally: Used for handling exceptions.
+void tryCatchFinally() {
+  try {
+    // try: Encloses code that may throw exceptions.
+    var result = 10 ~/ 0; // Attempting division by zero
+  } catch (e) {
+    // catch: Catches and handles exceptions that occur within the try block.
+    print('Error: $e'); // Handle the exception if division by zero occurs
+    // rethrow: The rethrow keyword is used to rethrow a caught exception.
+    rethrow; // Rethrow the caught exception
+  } finally {
+    // finally: Executes cleanup code that should always run, whether an exception was thrown or not.
+    print(
+        'This always runs'); // This block always executes, regardless of exceptions
+  }
+}
+
+// 2. throw: Used to explicitly throw an exception with a specified error message or object.
+void throwExample() {
+  throw Exception(
+      'Something went wrong'); // Throws an exception with a specific error message
+}
+
 void main() {
   runApp(const MyApp());
 }
