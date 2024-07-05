@@ -805,6 +805,17 @@ void deferredExample() {
   // import 'lib.dart' deferred as lib;
 }
 
+/* ---- Dart Import Directives ---- */
+// 1. The show keyword is used to import only specific parts of a library.
+void showExample() {
+  // import 'dart:math' show pi;
+}
+
+// 2. The hide keyword is used to hide specific parts of a library when importing it.
+void hideExample() {
+  // import 'dart:math' hide pi;
+}
+
 void main() {
   runApp(const MyApp());
 }
