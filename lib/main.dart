@@ -196,6 +196,13 @@ void staticExample() {
   Circle.calculateArea(16.0);
 }
 
+/* ---- Dynamic Type Declaration ---- */
+// 1. dynamic: Represents a dynamic type that can hold any Dart object.
+void dynamicExample() {
+  dynamic valueDy = 'Hello';
+  valueDy = 10;
+}
+
 void main() {
   runApp(const MyApp());
 }
