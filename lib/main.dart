@@ -767,6 +767,13 @@ void asExample(Object person) {
       as Employee; // Casts 'person' to type Employee and assigns it to 'employee'
 }
 
+/* ---- Access Modifiers  ---- */
+// public: Dart does not have a public keyword; all members are public by default.
+// private: Dart uses an underscore (_) to make a member private to its library.
+class Employee {
+  late String _name; // private member
+}
+
 void main() {
   runApp(const MyApp());
 }
